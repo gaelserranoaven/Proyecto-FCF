@@ -636,6 +636,28 @@ p { margin: 0; }
 .tab:active { transform: scale(.97); }
 @media (hover: hover) and (pointer: fine) {
   .tab:hover { background: var(--canvas-lifted); color: var(--brand-brown); }
+  .tab:hover .tab__arrow { transform: translateY(3px); }
+}
+/* Pestañas: flecha hacia abajo que avisa que llevan a otra parte de la página.
+   Al aparecer, cada pestaña hace un pulso y su flecha baja tres veces, en cascada. */
+.tab { gap: 8px; }
+.tab__arrow { flex: none; color: var(--brand-orange); transition: transform 200ms var(--ease-out); }
+.page-tabs .tab:nth-child(2) { --n: 1; }
+.page-tabs .tab:nth-child(3) { --n: 2; }
+.page-tabs .tab:nth-child(4) { --n: 3; }
+.page-tabs .tab:nth-child(n+5) { --n: 4; }
+.js .page-tabs.is-in .tab { animation: tab-pulse 1100ms var(--ease-out) calc(500ms + var(--n, 0) * 140ms) 2 both; }
+.js .page-tabs.is-in .tab__arrow { animation: tab-bob 900ms var(--ease-out) calc(500ms + var(--n, 0) * 140ms) 3; }
+@keyframes tab-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(240, 143, 18, .45); }
+  100% { box-shadow: 0 0 0 10px rgba(240, 143, 18, 0); }
+}
+@keyframes tab-bob {
+  0%, 100% { transform: none; }
+  40% { transform: translateY(4px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .page-tabs.is-in .tab, .js .page-tabs.is-in .tab__arrow { animation: none; }
 }
 
 

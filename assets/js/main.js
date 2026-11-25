@@ -69,7 +69,7 @@
         Solo transform + opacity. Escalonado 70ms, máximo 5 hermanos.
      ========================================================= */
   var revealEls = document.querySelectorAll('[data-reveal]');
-  var orbits = document.querySelectorAll('.orbit');
+  var orbits = document.querySelectorAll('.orbit, .page-tabs');
 
   function showAll() {
     revealEls.forEach(function (el) { el.classList.add('is-in'); });
