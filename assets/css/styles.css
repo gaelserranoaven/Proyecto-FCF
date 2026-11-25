@@ -875,6 +875,7 @@ fieldset.field > legend { font-weight: 600; font-size: 1rem; padding: 0; margin-
 .map__addr { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; font-size: 1.125rem; }
 .gallery--wide { gap: 28px; margin-top: 40px; }
 .gallery--wide .portrait { width: 200px; height: 200px; }
+@media (max-width: 700px) { .gallery--wide { justify-content: center; } }
 
 /* Texto largo (correos, enlaces) nunca fuerza el ancho de la página */
 main p, main a, main li, main dd, .footer__legal a { overflow-wrap: anywhere; }
