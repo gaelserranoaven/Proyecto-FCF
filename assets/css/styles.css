@@ -1117,6 +1117,8 @@ h1, h2, h3, h4, .footer__claim { hyphens: auto; overflow-wrap: anywhere; }
 /* El marcador de la historia no hereda el tamaño grande de la cita */
 .story__quote p .pendiente { font-size: 1rem; line-height: 1.4; }
 .ghost-word--right { right: 0; }
+/* Un teléfono dentro de un texto no se parte en dos renglones */
+a[href^="tel:"]:not(.btn) { white-space: nowrap; }
 .cta-band .actions .btn { flex: none; }
 
 /* ---------- Impresión y guardar como PDF ----------
