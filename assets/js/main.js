@@ -59,7 +59,7 @@
     toggle.addEventListener('click', function () {
       setMobileMenu(!panel.classList.contains('is-open'));
     });
-    window.matchMedia('(min-width: 961px)').addEventListener('change', function (mq) {
+    window.matchMedia('(min-width: 1081px)').addEventListener('change', function (mq) {
       if (mq.matches) setMobileMenu(false);
     });
   }
@@ -150,6 +150,24 @@
     return true;
   }
 
+  /* Grupo de opciones obligatorio (por ejemplo, el motivo del mensaje) */
+  function validateGroup(form, fs) {
+    var name = fs.getAttribute('data-required-group');
+    var ok = !!form.querySelector('input[name="' + name + '"]:checked');
+    var err = fs.querySelector('.error');
+    fs.classList.toggle('has-error', !ok);
+    if (err) err.textContent = ok ? '' : (fs.getAttribute('data-msg') || 'Elige una opción.');
+    return ok;
+  }
+
+  /* "Con uno de los dos basta": correo o teléfono */
+  function validateOneOf(group) {
+    var inputs = group.querySelectorAll('input');
+    var any = Array.prototype.some.call(inputs, function (i) { return (i.value || '').trim(); });
+    if (!any) setError(inputs[0], group.getAttribute('data-msg') || 'Completa al menos uno de estos campos.');
+    return any;
+  }
+
   function serialize(form) {
     var data = {};
     new FormData(form).forEach(function (val, key) {
@@ -190,11 +208,22 @@
       e.preventDefault();
       if (status) { status.textContent = ''; status.classList.remove('is-error'); }
 
-      var firstBad = null;
+      var bad = [];
       fields.forEach(function (el) {
-        if (!validateField(el) && !firstBad) firstBad = el;
+        if (!validateField(el)) bad.push(el);
       });
-      if (firstBad) { firstBad.focus(); return; }
+      form.querySelectorAll('[data-required-group]').forEach(function (fs) {
+        if (!validateGroup(form, fs)) bad.push(fs.querySelector('input'));
+      });
+      form.querySelectorAll('[data-one-of]').forEach(function (g) {
+        if (!validateOneOf(g)) bad.push(g.querySelector('input'));
+      });
+      if (bad.length) {
+        // El foco va al primer error según el orden de la página
+        bad.sort(function (a, b) { return a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1; });
+        bad[0].focus();
+        return;
+      }
 
       var hp = form.querySelector('[name="empresa_web"]');
       if (hp && hp.value) { card.classList.add('is-sent'); return; } // bot
@@ -218,12 +247,23 @@
       });
     });
 
+    // Al elegir una opción o escribir uno de los dos datos de contacto, el aviso desaparece
+    form.querySelectorAll('[data-required-group]').forEach(function (fs) {
+      fs.addEventListener('change', function () { validateGroup(form, fs); });
+    });
+    form.querySelectorAll('[data-one-of]').forEach(function (g) {
+      g.addEventListener('input', function () {
+        g.querySelectorAll('input').forEach(function (i) { if (!(i.value || '').trim()) clearError(i); });
+      });
+    });
+
     var again = card && card.querySelector('[data-again]');
     if (again) {
       again.addEventListener('click', function () {
         form.reset();
         card.classList.remove('is-sent');
         fields.forEach(clearError);
+        form.querySelectorAll('fieldset.has-error').forEach(function (fs) { fs.classList.remove('has-error'); });
         var first = form.querySelector('input:not([type="hidden"]), select, textarea');
         if (first) first.focus();
         form.dispatchEvent(new Event('fcf:reset'));
@@ -237,9 +277,18 @@
   var orgLabel = document.getElementById('org-label');
   var orgHint = document.getElementById('org-hint');
 
+  var msgHint = document.getElementById('msg-hint');
+  var MSG_HINTS = {
+    ayudar: 'Cuéntanos cómo te gustaría ayudar.',
+    familiar: 'Cuéntanos para quién buscas apoyo y cuál es su situación. Tratamos lo que nos cuentes con reserva.',
+    entidad: 'Cuéntanos qué necesita tu entidad.',
+    empleo: 'Cuéntanos tu perfil y tu experiencia. Te diremos cómo enviarnos tu hoja de vida.'
+  };
+
   function updateMotivo() {
     if (!orgInput || !orgLabel) return;
     var sel = document.querySelector('input[name="motivo"]:checked');
+    if (msgHint) msgHint.textContent = (sel && MSG_HINTS[sel.value]) || '';
     var isEntity = sel && sel.value === 'entidad';
     orgLabel.textContent = isEntity ? 'Entidad' : 'Ciudad o barrio';
     orgInput.required = isEntity;
@@ -289,14 +338,20 @@
       return sel ? parseInt(sel.value, 10) : 0;
     }
 
-    function updateDonation() {
+    var summary = donation.querySelector('[data-donate-summary]');
+
+    function amountText() {
       var freq = donation.querySelector('input[name="frecuencia"]:checked');
       var monthly = freq && freq.value === 'mensual';
       var amount = currentAmount();
-      btn.textContent = amount
-        ? 'Donar ' + money.format(amount).replace(/\s/g, '') + (monthly ? ' cada mes' : '')
-        : 'Elige un valor para donar';
-      btn.disabled = !amount;
+      return amount ? money.format(amount).replace(/\s/g, '') + (monthly ? ' cada mes' : '') : '';
+    }
+
+    function updateDonation() {
+      var txt = amountText();
+      btn.textContent = txt ? 'Quiero aportar ' + txt : 'Elige un valor para aportar';
+      btn.disabled = !txt;
+      if (summary && notice.classList.contains('is-visible')) summary.textContent = 'Gracias por querer aportar ' + txt + '.';
     }
 
     donation.querySelectorAll('input[name="frecuencia"], input[name="monto"]').forEach(function (i) {
@@ -313,6 +368,7 @@
       });
     }
     btn.addEventListener('click', function () {
+      if (summary) summary.textContent = 'Gracias por querer aportar ' + amountText() + '.';
       notice.classList.add('is-visible');
       notice.focus();
     });

@@ -11,10 +11,16 @@
 <meta property="og:description" content="Dona dinero, alimentos, ropa o tu tiempo. Tu aporte acompaña a personas mayores y a jóvenes con discapacidad cognitiva en Bogotá.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
-<link rel="icon" href="assets/img/logo-fcf.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400..800&amp;display=swap">
+<meta property="og:site_name" content="Fundación Construyendo Futuro">
+<meta property="og:url" content="https://gaelserranoaven.github.io/Proyecto-FCF/donaciones.html">
+<meta property="og:image" content="https://gaelserranoaven.github.io/Proyecto-FCF/assets/img/compartir.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fundación Construyendo Futuro: cada persona merece un lugar donde sentirse cuidada.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icono-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/img/icono-180.png">
+<link rel="preload" href="assets/fonts/sofia-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -38,6 +44,7 @@
           <button class="nav__link" type="button" data-dropdown-btn aria-expanded="false" aria-controls="menu-quienes">Quiénes somos <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown__menu" id="menu-quienes">
             <a class="dropdown__item" href="index.html#nosotros"><strong>Nuestro propósito</strong><span>A quién acompañamos y por qué</span></a>
+            <a class="dropdown__item" href="quienes-somos.html"><strong>Nuestra historia</strong><span>De dónde venimos y quiénes cuidamos</span></a>
             <a class="dropdown__item" href="transparencia.html"><strong>Transparencia</strong><span>Informes de gestión y política de datos</span></a>
           </div>
         </li>
@@ -51,7 +58,10 @@
         <li><a class="nav__link" href="como-ayudar.html">Cómo ayudar</a></li>
         <li><a class="nav__link" href="sedes.html">Sedes</a></li>
       </ul>
-      <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      <div class="nav__actions">
+        <a class="btn btn-donate nav__cta" href="donaciones.html" aria-current="page"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg> Donar</a>
+        <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      </div>
     </div>
   </nav>
 </header>
@@ -66,19 +76,17 @@
     </div>
     <p class="head__aside">Cada aporte acompaña a personas mayores que viven o están en riesgo de vivir en la calle, y a jóvenes y adultos con discapacidad en alta vulnerabilidad.</p>
   </div>
-
-  <div class="ways">
-    <article class="way" data-reveal><span class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><h3>Dona dinero</h3><p>Una vez o cada mes, en línea o por transferencia.</p></article>
-    <article class="way" data-reveal><span class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8"/></svg></span><h3>Dona en especie</h3><p>Alimentos, ropa o elementos de aseo que necesitamos.</p></article>
-    <article class="way" data-reveal><span class="ico" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V6a1.5 1.5 0 0 1 3 0v5M11 11V4.5a1.5 1.5 0 0 1 3 0V11M14 11V6a1.5 1.5 0 0 1 3 0v8a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-3l-2-3a1.5 1.5 0 0 1 2.4-1.8L8 14"/></svg></span><h3>Dona tu tiempo</h3><p>Escríbenos si quieres ser voluntario o voluntaria.</p></article>
-  </div>
+  <nav class="page-tabs" aria-label="Formas de donar">
+    <a class="tab" href="#dinero">Dona dinero <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+    <a class="tab" href="#especie">Dona en especie <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+    <a class="tab" href="#tiempo">Dona tu tiempo <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+  </nav>
 </section>
 
-<section class="section container-wide" aria-labelledby="h-linea">
+<section class="section section--tight container-wide" aria-labelledby="h-linea">
   <div class="form-layout" style="margin-top:0">
-    <div class="form-card" data-donation data-reveal>
-      
-      <h2 id="h-linea" style="margin-top:14px">Elige cómo quieres aportar</h2>
+    <div class="form-card" id="dinero" data-donation data-reveal>
+      <h2 id="h-linea">Elige cómo quieres aportar</h2>
 
       <fieldset class="field">
         <legend>Frecuencia</legend>
@@ -88,42 +96,49 @@
       <fieldset class="field">
         <legend>Valor del aporte</legend>
         <div class="options amounts"><div class="opt"><input type="radio" id="monto-30000" name="monto" value="30000"><label for="monto-30000">$30.000</label></div><div class="opt"><input type="radio" id="monto-50000" name="monto" value="50000" checked><label for="monto-50000">$50.000</label></div><div class="opt"><input type="radio" id="monto-100000" name="monto" value="100000"><label for="monto-100000">$100.000</label></div></div>
-        <p class="hint">Montos sugeridos: <span class="pendiente">por confirmar con la Fundación</span></p>
+        <p class="hint">Qué logra cada aporte: <span class="pendiente">equivalencias reales, por confirmar con la fundación</span></p>
       </fieldset>
 
       <div class="field"><label for="otro-monto">Otro monto (COP)</label>
         <input class="input" id="otro-monto" type="text" inputmode="numeric" autocomplete="off" placeholder="Ej. 75000"></div>
 
-      <button class="btn btn-donate donate-submit" type="button" data-donate-btn>Donar</button>
-      <p class="notice" role="status" tabindex="-1">Estamos habilitando el pago en línea. Mientras tanto puedes aportar por transferencia con los datos de esta página, o <a href="contacto.html?motivo=ayudar">escribirnos</a> y te acompañamos.</p>
-      <p class="hint" style="margin-top:16px">Pago seguro con PSE y tarjeta: <span class="pendiente">pasarela por definir</span></p>
+      <button class="btn btn-donate donate-submit" type="button" data-donate-btn>Quiero aportar</button>
+      <div class="notice" role="status" tabindex="-1">
+        <p><strong data-donate-summary>Gracias por querer aportar.</strong></p>
+        <p>Estamos habilitando el pago en línea. Hoy puedes hacer tu aporte por transferencia y avisarnos para enviarte el certificado de donación.</p>
+        <div class="actions"><a class="btn btn-primary" href="#transferencia">Ver datos para transferir</a><a class="btn btn-outline" href="contacto.html?motivo=ayudar">Avisar de mi aporte</a></div>
+      </div>
+      <p class="hint" style="margin-top:16px">Pago en línea con PSE y tarjeta: <span class="pendiente">pasarela por definir</span></p>
+      <p class="hint"><a href="transparencia.html">Mira cómo rendimos cuentas cada año</a></p>
     </div>
 
     <div class="aside-cards">
-      <div class="info-card" data-reveal>
-        
-        <h3 style="margin-top:6px">Prefieres transferir</h3>
+      <div class="info-card" id="transferencia" tabindex="-1" data-reveal>
+        <h3>¿Prefieres transferir?</h3>
         <p><strong>Titular:</strong> Fundación Construyendo Futuro ONG</p>
         <p><strong>NIT:</strong> 900.310.195-2</p>
         <p><strong>Cuenta de ahorros:</strong> <span class="pendiente">banco y número</span></p>
         <p><strong>Nequi o Daviplata:</strong> <span class="pendiente">número</span></p>
       </div>
       <div class="info-card info-card--sky" data-reveal>
-        
-        <h3 style="margin-top:6px">¿Necesitas certificado para tu declaración?</h3>
+        <h3>¿Necesitas certificado para tu declaración?</h3>
         <p>Somos una entidad sin ánimo de lucro (NIT 900.310.195-2). Escríbenos con el soporte de tu aporte y te enviamos el certificado. <span class="pendiente">confirmar requisitos con el contador</span></p>
         <a class="btn btn-outline" href="contacto.html?motivo=ayudar" style="margin-top:8px">Solicitar certificado</a>
       </div>
-      <div class="info-card info-card--warm" data-reveal>
-        
-        <h3 style="margin-top:6px">Lo que más necesitamos</h3>
+      <div class="info-card info-card--warm" id="especie" data-reveal>
+        <h3>Lo que más necesitamos</h3>
         <p>Antes de llevar tu donación, escríbenos para coordinar la entrega en una de nuestras sedes.</p>
         <ul class="checks" style="margin-top:6px"><li>Alimentos no perecederos</li><li>Ropa en buen estado</li><li>Productos de aseo</li></ul>
         <a class="btn btn-outline" href="contacto.html?motivo=ayudar" style="margin-top:8px">Coordinar entrega</a>
       </div>
+      <div class="info-card" id="tiempo" data-reveal>
+        <h3>Dona tu tiempo</h3>
+        <p>Si quieres acompañar actividades con tu tiempo y tus habilidades, escríbenos y lo conversamos.</p>
+        <a class="btn btn-outline" href="contacto.html?motivo=ayudar" style="margin-top:8px">Quiero donar mi tiempo</a>
+      </div>
       <div class="info-card" data-reveal>
-        
-        <p style="margin-top:6px">Nunca pedimos contraseñas ni datos bancarios por correo o mensajes. Si dudas de un contacto, escribe a <a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto@fundacionconstruyendofuturo.org</a>.</p>
+        <h3>Cuida tus datos</h3>
+        <p>Nunca pedimos contraseñas ni datos bancarios por correo o mensajes. Si dudas de un contacto, escribe a <a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto<wbr>@fundacionconstruyendofuturo.org</a>.</p>
       </div>
     </div>
   </div>
@@ -144,7 +159,7 @@
     <div class="footer__cols">
       <nav class="footer__col" aria-labelledby="f-inst">
         <h2 id="f-inst">Institucional</h2>
-        <a href="index.html#nosotros">Quiénes somos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
         <a href="como-ayudar.html">Cómo ayudar</a>
         <a href="transparencia.html">Transparencia</a>
       </nav>
@@ -168,7 +183,7 @@
 
     <div class="footer__legal">
       <span>© 2026 Fundación Construyendo Futuro ONG · NIT 900.310.195-2</span>
-      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
+      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto<wbr>@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
     </div>
   </div>
 </footer>

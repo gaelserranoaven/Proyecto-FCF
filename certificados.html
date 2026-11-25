@@ -11,10 +11,16 @@
 <meta property="og:description" content="Solicita en línea tu certificado laboral de la Fundación Construyendo Futuro. Se envía al correo registrado en nómina.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
-<link rel="icon" href="assets/img/logo-fcf.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400..800&amp;display=swap">
+<meta property="og:site_name" content="Fundación Construyendo Futuro">
+<meta property="og:url" content="https://gaelserranoaven.github.io/Proyecto-FCF/certificados.html">
+<meta property="og:image" content="https://gaelserranoaven.github.io/Proyecto-FCF/assets/img/compartir.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fundación Construyendo Futuro: cada persona merece un lugar donde sentirse cuidada.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icono-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/img/icono-180.png">
+<link rel="preload" href="assets/fonts/sofia-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -38,6 +44,7 @@
           <button class="nav__link" type="button" data-dropdown-btn aria-expanded="false" aria-controls="menu-quienes">Quiénes somos <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown__menu" id="menu-quienes">
             <a class="dropdown__item" href="index.html#nosotros"><strong>Nuestro propósito</strong><span>A quién acompañamos y por qué</span></a>
+            <a class="dropdown__item" href="quienes-somos.html"><strong>Nuestra historia</strong><span>De dónde venimos y quiénes cuidamos</span></a>
             <a class="dropdown__item" href="transparencia.html"><strong>Transparencia</strong><span>Informes de gestión y política de datos</span></a>
           </div>
         </li>
@@ -51,7 +58,10 @@
         <li><a class="nav__link" href="como-ayudar.html">Cómo ayudar</a></li>
         <li><a class="nav__link" href="sedes.html">Sedes</a></li>
       </ul>
-      <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      <div class="nav__actions">
+        <a class="btn btn-donate nav__cta" href="donaciones.html"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg> Donar</a>
+        <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      </div>
     </div>
   </nav>
 </header>
@@ -64,7 +74,7 @@
       <span class="eyebrow">Certificados laborales</span>
       <h1 id="h-cert">Solicita tu certificado laboral en línea.</h1>
     </div>
-    <p class="head__aside">Para quienes trabajan o trabajaron con la Fundación.</p>
+    <p class="head__aside">Para quienes trabajan o trabajaron con la fundación.</p>
   </div>
 
   <ol class="three-steps" style="list-style:none;padding:0">
@@ -89,7 +99,7 @@
                 <option value="cc">Cédula de ciudadanía</option>
                 <option value="ce">Cédula de extranjería</option>
                 <option value="pasaporte">Pasaporte</option>
-                <option value="ppt">PPT</option>
+                <option value="ppt">Permiso por Protección Temporal (PPT)</option>
               </select><p class="error" role="alert"></p></div>
             <div class="field"><label for="num-doc">Número de documento</label>
               <input class="input" id="num-doc" name="numero_documento" type="text" inputmode="numeric" data-digits autocomplete="off" placeholder="Solo números" required>
@@ -108,7 +118,7 @@
             </select><p class="error" role="alert"></p></div>
 
           <fieldset class="field">
-            <legend>¿Sigues vinculado?</legend>
+            <legend>¿Trabajas hoy con la fundación?</legend>
             <div class="options"><div class="opt"><input type="radio" id="vinculado-si" name="vinculado" value="si" checked><label for="vinculado-si">Sí, trabajo actualmente</label></div><div class="opt"><input type="radio" id="vinculado-no" name="vinculado" value="no"><label for="vinculado-no">No, ya terminé mi contrato</label></div></div>
           </fieldset>
 
@@ -122,6 +132,7 @@
             <p class="error" role="alert"></p>
           </div>
 
+          <p class="hint field-note">Enviamos el certificado solo al correo que está registrado en nómina.</p>
           <div class="form-actions"><button class="btn btn-primary" type="submit">Solicitar certificado</button></div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </div>
@@ -136,16 +147,14 @@
 
     <div class="aside-cards">
       <div class="info-card info-card--sky" data-reveal>
-        
-        <h3 style="margin-top:6px">Solo al correo de nómina</h3>
+                <h3>Solo al correo de nómina</h3>
         <p>Solo enviamos certificados al correo que está registrado en nómina. Si cambiaste de correo, escríbenos primero.</p>
         <a class="btn btn-outline" href="contacto.html?motivo=otro" style="margin-top:8px">Actualizar mi correo</a>
       </div>
       <div class="info-card" data-reveal>
-        
-        <h3 style="margin-top:6px">¿Dudas?</h3>
+                <h3>¿Dudas?</h3>
         <p>Talento humano: <span class="pendiente">correo o teléfono</span></p>
-        <p>También puedes escribir a <a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto@fundacionconstruyendofuturo.org</a>.</p>
+        <p>También puedes escribir a <a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto<wbr>@fundacionconstruyendofuturo.org</a>.</p>
       </div>
     </div>
   </div>
@@ -166,7 +175,7 @@
     <div class="footer__cols">
       <nav class="footer__col" aria-labelledby="f-inst">
         <h2 id="f-inst">Institucional</h2>
-        <a href="index.html#nosotros">Quiénes somos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
         <a href="como-ayudar.html">Cómo ayudar</a>
         <a href="transparencia.html">Transparencia</a>
       </nav>
@@ -190,7 +199,7 @@
 
     <div class="footer__legal">
       <span>© 2026 Fundación Construyendo Futuro ONG · NIT 900.310.195-2</span>
-      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
+      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto<wbr>@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
     </div>
   </div>
 </footer>

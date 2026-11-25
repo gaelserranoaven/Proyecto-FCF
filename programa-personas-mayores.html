@@ -4,17 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Personas mayores en situación de calle — Fundación Construyendo Futuro</title>
-<meta name="description" content="Programa de atención integral a personas mayores en situación de calle: cuidado, alimentación, actividades y acompañamiento.">
+<meta name="description" content="Un lugar adonde llegar de día y de noche: cuidado, alimentación, actividades y acompañamiento para personas mayores que viven en la calle en Bogotá.">
 <meta name="theme-color" content="#F3F0EE">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Personas mayores en situación de calle — Fundación Construyendo Futuro">
-<meta property="og:description" content="Programa de atención integral a personas mayores en situación de calle: cuidado, alimentación, actividades y acompañamiento.">
+<meta property="og:description" content="Un lugar adonde llegar de día y de noche: cuidado, alimentación, actividades y acompañamiento para personas mayores que viven en la calle en Bogotá.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_CO">
-<link rel="icon" href="assets/img/logo-fcf.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400..800&amp;display=swap">
+<meta property="og:site_name" content="Fundación Construyendo Futuro">
+<meta property="og:url" content="https://gaelserranoaven.github.io/Proyecto-FCF/programa-personas-mayores.html">
+<meta property="og:image" content="https://gaelserranoaven.github.io/Proyecto-FCF/assets/img/compartir.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fundación Construyendo Futuro: cada persona merece un lugar donde sentirse cuidada.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/icono-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/img/icono-180.png">
+<link rel="preload" href="assets/fonts/sofia-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -38,11 +44,12 @@
           <button class="nav__link" type="button" data-dropdown-btn aria-expanded="false" aria-controls="menu-quienes">Quiénes somos <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown__menu" id="menu-quienes">
             <a class="dropdown__item" href="index.html#nosotros"><strong>Nuestro propósito</strong><span>A quién acompañamos y por qué</span></a>
+            <a class="dropdown__item" href="quienes-somos.html"><strong>Nuestra historia</strong><span>De dónde venimos y quiénes cuidamos</span></a>
             <a class="dropdown__item" href="transparencia.html"><strong>Transparencia</strong><span>Informes de gestión y política de datos</span></a>
           </div>
         </li>
         <li class="dropdown" data-dropdown>
-          <button class="nav__link" type="button" data-dropdown-btn aria-expanded="false" aria-controls="menu-programas">Nuestros programas <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
+          <button class="nav__link" type="button" data-dropdown-btn aria-expanded="false" aria-controls="menu-programas" data-here>Nuestros programas <svg class="nav__chevron" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg></button>
           <div class="dropdown__menu" id="menu-programas">
             <a class="dropdown__item" href="programa-jovenes.html"><strong>Jóvenes con discapacidad cognitiva</strong><span>Nuestro primer programa</span></a>
             <a class="dropdown__item" href="programa-personas-mayores.html" aria-current="page"><strong>Personas mayores</strong><span>En situación de calle</span></a>
@@ -51,7 +58,10 @@
         <li><a class="nav__link" href="como-ayudar.html">Cómo ayudar</a></li>
         <li><a class="nav__link" href="sedes.html">Sedes</a></li>
       </ul>
-      <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      <div class="nav__actions">
+        <a class="btn btn-donate nav__cta" href="donaciones.html"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg> Donar</a>
+        <a class="btn btn-primary nav__cta" href="contacto.html">Contáctanos</a>
+      </div>
     </div>
   </nav>
 </header>
@@ -64,24 +74,46 @@
       <span class="eyebrow">Programa · Personas mayores</span>
       <h1 id="h-may">Personas mayores en situación de calle.</h1>
     </div>
-    <p class="head__aside">Atención integral a personas mayores que viven en la calle: cuidado, alimentación, actividades y acompañamiento, con respeto por la historia de cada una.</p>
+    <p class="head__aside">Un lugar adonde llegar, de día y de noche: cuidado, alimentación, actividades y acompañamiento, con respeto por la historia de cada persona.</p>
   </div>
   <div style="margin-top:40px" data-reveal>
-    <dl class="ficha"><div><dt>Población</dt><dd>Personas mayores en situación de calle</dd></div><div><dt>Sedes</dt><dd>Samper Mendoza y La Favorita</dd></div><div><dt>Cobertura</dt><dd>80 a 100 personas por jornada</dd></div><div><dt>Atendidas por año</dt><dd><span class="pendiente">N</span></dd></div></dl>
+    <dl class="ficha"><div><dt>A quién acompañamos</dt><dd>Personas mayores que viven en la calle</dd></div><div><dt>Dónde</dt><dd>Samper Mendoza y La Favorita</dd></div><div><dt>Cuántas personas</dt><dd>80 a 100 personas por jornada</dd></div><div><dt>Atendidas por año</dt><dd><span class="pendiente">N</span></dd></div></dl>
   </div>
   <nav class="page-tabs" aria-label="Secciones del programa">
+    <a class="tab" href="#llegada">Cómo llegan <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <a class="tab" href="#dia-a-dia">Día a día <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <a class="tab" href="#centros">Centros de cuidado <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <a class="tab" href="#equipo">Equipo <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
-    <a class="tab" href="#registro">Registro digital <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+    <a class="tab" href="#registro">Registro del cuidado <svg class="tab__arrow" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
   </nav>
+  <div class="frame" data-reveal>
+    <div class="frame__photo ph-img" role="img" aria-label="Espacio para fotografía del programa de personas mayores">
+      <span class="pendiente">FOTO REAL · personas mayores en el centro (con autorización firmada)</span>
+    </div>
+  </div>
+</section>
+
+<section class="section container-wide" id="llegada" aria-labelledby="h-llegada">
+  <div class="panel" data-reveal>
+    <div class="head head--top">
+      <div class="head__main">
+        <span class="eyebrow">Cómo llegan</span>
+        <h2 id="h-llegada">La puerta está abierta de día y de noche.</h2>
+      </div>
+      <div class="head__aside">
+        <p>Las personas mayores que viven en la calle llegan directamente a nuestras sedes, al centro día o al centro noche. Allí un equipo las recibe y conoce su situación.</p>
+        <p style="margin-top:12px">¿Conoces a alguien que lo necesita? Escríbenos o llámanos y te orientamos.</p>
+        <div class="actions" style="margin-top:20px"><a class="btn btn-primary" href="sedes.html">Ver las sedes <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-outline" href="tel:+576017175247">Llámanos · +57 601 717 5247</a></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="section container-wide" id="dia-a-dia" aria-labelledby="h-dia">
   <div class="head" data-reveal>
     <div class="head__main">
       <span class="eyebrow">Qué hacemos</span>
-      <h2 id="h-dia">Atención respetuosa que recupera la dignidad, la salud y los vínculos.</h2>
+      <h2 id="h-dia">Atención respetuosa que cuida la dignidad y ayuda a recuperar la salud y los vínculos.</h2>
     </div>
   </div>
   <div class="lifted">
@@ -96,14 +128,11 @@
     <div class="wrap"><span class="program__num" aria-hidden="true">01</span><div class="portrait ph-img" role="img" aria-label="Espacio para fotografía: comedor o dormitorio"><span class="pendiente">FOTO · comedor o dormitorio</span></div></div>
   </div>
   <div class="program__body" data-reveal>
-    <span class="tag">Operación del servicio</span>
-    <h2 id="h-centros">Centros de cuidado transitorio, día y noche</h2>
-    <p>Recibimos a personas mayores y garantizamos su cuidado integral durante la jornada, con cobertura de 80 a 100 personas por jornada.</p>
+    <span class="tag">Día y noche</span>
+    <h2 id="h-centros">Centros de cuidado transitorio</h2>
+    <p>Recibimos a personas mayores y cuidamos de ellas durante toda la jornada. Cada jornada acompañamos de 80 a 100 personas.</p>
     
-    <div class="lists">
-      <div class="list-card"><h3 class="sr-only">Qué incluye</h3><h4 aria-hidden="true">Qué incluye</h4><ul class="checks"><li>Alojamiento y alimentación</li><li>Cuidado básico e higiene</li><li>Acompañamiento psicosocial</li><li>Actividades de bienestar</li></ul></div>
-      <div class="list-card list-card--warm"><h3 class="sr-only">Qué recibe la entidad</h3><h4 aria-hidden="true">Qué recibe la entidad</h4><ul class="checks"><li>Ficha de ingreso por persona</li><li>Control de asistencia diaria</li><li>Informe técnico mensual</li></ul></div>
-    </div>
+    <div class="list-card list-card--wide"><h3>Qué incluye</h3><ul class="checks"><li>Alojamiento y alimentación</li><li>Cuidado básico e higiene</li><li>Acompañamiento psicosocial</li><li>Actividades de bienestar</li></ul></div>
   </div>
 </section>
 <section class="program program--flip container-wide" id="equipo" aria-labelledby="h-equipo">
@@ -112,13 +141,10 @@
   </div>
   <div class="program__body" data-reveal>
     <span class="tag">Equipo</span>
-    <h2 id="h-equipo">Atención interdisciplinaria</h2>
-    <p>Un equipo profesional valora a cada persona, define su plan individual y hace seguimiento a su evolución.</p>
-    <div class="chips"><span class="chip">Enfermería</span><span class="chip">Trabajo social</span><span class="chip">Psicología</span><span class="chip">Nutrición</span><span class="chip"><span class="pendiente">confirmar perfiles y número</span></span></div>
-    <div class="lists">
-      <div class="list-card"><h3 class="sr-only">Qué incluye</h3><h4 aria-hidden="true">Qué incluye</h4><ul class="checks"><li>Valoración integral de ingreso</li><li>Plan individual de atención</li><li>Seguimiento y remisiones</li></ul></div>
-      <div class="list-card list-card--warm"><h3 class="sr-only">Qué recibe la entidad</h3><h4 aria-hidden="true">Qué recibe la entidad</h4><ul class="checks"><li>Plan individual firmado</li><li>Actas de equipo</li><li>Hojas de vida del personal</li></ul></div>
-    </div>
+    <h2 id="h-equipo">Un equipo interdisciplinario para cada persona</h2>
+    <p>Profesionales de distintas áreas valoran a cada persona, definen su plan individual y acompañan su evolución.</p>
+    <div class="chips"><span class="chip">Enfermería</span><span class="chip">Trabajo social</span><span class="chip">Psicología</span><span class="chip">Nutrición</span><span class="pendiente">confirmar perfiles y número</span></div>
+    <div class="list-card list-card--wide"><h3>Cómo trabaja</h3><ul class="checks"><li>Valoración integral al llegar</li><li>Plan individual de atención</li><li>Seguimiento y conexión con otros servicios</li></ul></div>
   </div>
 </section>
 <section class="program container-wide" id="registro" aria-labelledby="h-registro">
@@ -126,21 +152,25 @@
     <div class="wrap"><span class="program__num" aria-hidden="true">03</span><div class="portrait ph-img" role="img" aria-label="Espacio para fotografía: registro en tablet"><span class="pendiente">FOTO · registro en tablet</span></div></div>
   </div>
   <div class="program__body" data-reveal>
-    <span class="tag">Trazabilidad</span>
-    <h2 id="h-registro">Registro digital del cuidado</h2>
-    <p>Plataforma propia donde el equipo registra notas de enfermería y signos vitales en tiempo real, alineada a los formatos que exigen las entidades.</p>
+    <span class="tag">Cuidado con registro</span>
+    <h2 id="h-registro">Cada cuidado queda registrado</h2>
+    <p>Usamos una plataforma propia para registrar cada día las notas de enfermería y los signos vitales de cada persona. Así el equipo sabe cómo está cada una y puede actuar a tiempo.</p>
     
-    <div class="lists">
-      <div class="list-card"><h3 class="sr-only">Qué incluye</h3><h4 aria-hidden="true">Qué incluye</h4><ul class="checks"><li>Notas de enfermería por turno</li><li>Signos vitales y alertas</li><li>Historial por persona</li></ul></div>
-      <div class="list-card list-card--warm"><h3 class="sr-only">Qué recibe la entidad</h3><h4 aria-hidden="true">Qué recibe la entidad</h4><ul class="checks"><li>Reportes exportables</li><li>Trazabilidad de cada atención</li><li>Datos protegidos bajo Ley 1581</li></ul></div>
-    </div>
+    <div class="list-card list-card--wide"><h3>Qué se registra</h3><ul class="checks"><li>Notas de enfermería por turno</li><li>Signos vitales y alertas</li><li>Historial por persona</li><li>Datos protegidos (Ley 1581)</li></ul></div>
   </div>
 </section>
-<div class="section"></div>
+<section class="section container-wide" id="entidades" aria-labelledby="h-ent">
+  <div class="info-card info-card--warm info-card--wide" data-reveal>
+    <h2 class="h-card" id="h-ent">Si representas a una entidad</h2>
+    <p>Llevamos registro de cada atención y entregamos la información que tu entidad necesita para hacer seguimiento al servicio.</p>
+    <div class="chips" style="margin-top:10px"><span class="chip">Ficha de ingreso por persona</span><span class="chip">Control de asistencia diaria</span><span class="chip">Informe técnico mensual</span><span class="chip">Plan individual de atención</span><span class="chip">Reportes exportables</span><span class="chip">Trazabilidad de cada atención</span></div>
+    <a class="btn btn-primary" href="contacto.html?motivo=entidad" style="margin-top:14px">Agendar una reunión <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
 <section class="section container-wide" aria-label="Llamado a la acción">
   <div class="cta-band" data-reveal>
-    <h2>¿Tu entidad necesita operar un servicio así?</h2>
-    <div class="actions"><a class="btn btn-primary" href="contacto.html?motivo=entidad">Agendar reunión técnica <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-outline" href="programa-jovenes.html">Ver el programa de jóvenes</a></div>
+    <h2>¿Quieres ayudar a que más personas tengan un lugar adonde llegar?</h2>
+    <div class="actions"><a class="btn btn-primary" href="como-ayudar.html">Cómo ayudar <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-outline" href="programa-jovenes.html">Ver el programa de jóvenes</a></div>
   </div>
 </section>
 </main>
@@ -158,7 +188,7 @@
     <div class="footer__cols">
       <nav class="footer__col" aria-labelledby="f-inst">
         <h2 id="f-inst">Institucional</h2>
-        <a href="index.html#nosotros">Quiénes somos</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
         <a href="como-ayudar.html">Cómo ayudar</a>
         <a href="transparencia.html">Transparencia</a>
       </nav>
@@ -182,7 +212,7 @@
 
     <div class="footer__legal">
       <span>© 2026 Fundación Construyendo Futuro ONG · NIT 900.310.195-2</span>
-      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
+      <span class="contact-links"><a href="mailto:contacto@fundacionconstruyendofuturo.org">contacto<wbr>@fundacionconstruyendofuturo.org</a><a href="tel:+576017175247">+57 601 717 5247</a></span>
     </div>
   </div>
 </footer>

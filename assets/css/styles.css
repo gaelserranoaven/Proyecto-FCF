@@ -3,6 +3,26 @@
    Sistema de diseño: HANDOFF §3. Solo una fuente: Sofia Sans.
    ========================================================== */
 
+/* ---------- Fuente alojada en el propio sitio (v1.5) ----------
+   Sofia Sans variable (400 a 800). Antes se cargaba desde Google Fonts: ahora el sitio no depende
+   de terceros para mostrarse y el navegador del visitante no contacta a Google. */
+@font-face {
+  font-family: "Sofia Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/sofia-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Sofia Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/sofia-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------- Tokens ---------- */
 :root {
   --ink: #2B1F0E;
@@ -389,7 +409,7 @@ p { margin: 0; }
 .nav__toggle[aria-expanded="true"] .ico-close { display: block; }
 
 /* Móvil / tablet: menú hamburguesa */
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
   .nav {
     flex-wrap: wrap;
     border-radius: 32px;
@@ -410,7 +430,7 @@ p { margin: 0; }
 
   .nav__links { flex-direction: column; align-items: stretch; gap: 0; }
   .nav__link { width: 100%; min-height: 52px; font-size: 1.125rem; justify-content: space-between; }
-  .nav__link:hover, .nav__link[aria-current="page"] { text-decoration: none; }
+  .nav__link:hover { text-decoration: none; }
 
   /* El desplegable pasa a ser un bloque en línea dentro del panel */
   .dropdown__menu {
@@ -430,7 +450,7 @@ p { margin: 0; }
 
   .nav__panel .btn { width: 100%; }
 }
-@media (min-width: 961px) {
+@media (min-width: 1081px) {
   .nav__panel { display: contents; }
 }
 
@@ -886,7 +906,6 @@ fieldset.field > legend { font-weight: 600; font-size: 1rem; padding: 0; margin-
 .connect__item { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .connect__node { width: 72px; height: 72px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--brand-brown); display: flex; align-items: center; justify-content: center; color: var(--brand-brown); box-shadow: 0 0 0 8px var(--canvas); }
 .connect__item--last .connect__node { background: var(--brand-orange); border-color: var(--brand-orange); color: var(--ink); }
-.connect__item h3 { font-size: 1.5rem; }
 .connect__item p { color: var(--muted); font-size: 1rem; flex: 1; }
 .connect__item .btn { margin-top: 6px; min-height: 48px; }
 
@@ -967,3 +986,147 @@ a, button, .opt label { -webkit-tap-highlight-color: rgba(75, 54, 22, .14); touc
 
 /* Texto al 200 %: una palabra larga puede partirse (con guion) en vez de salirse de la pantalla */
 h1, h2, h3, h4, .footer__claim { hyphens: auto; overflow-wrap: anywhere; }
+
+/* ==========================================================
+   v1.5 — revisión completa (crítica de diseño + estudio de mercado)
+   ========================================================== */
+
+/* ---------- Utilidades ---------- */
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.section--tight { padding-top: 56px; }
+[id] { scroll-margin-top: 24px; }
+.link-arrow { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--brand-brown); }
+.link-arrow svg { flex: none; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .link-arrow:hover svg { transform: translateX(3px); }
+}
+/* Un marcador pendiente nunca baja de 12 px, aunque esté dentro de un texto pequeño */
+.pendiente { font-size: max(.82em, 0.75rem); }
+
+/* ---------- Menú: botón Donar y página actual ---------- */
+.nav__actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.nav__cta { padding: 0 22px; }
+/* Marca dónde estoy también dentro de los desplegables */
+.nav__link[data-here] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--brand-orange);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+}
+.dropdown__item[aria-current="page"] { background: var(--canvas); }
+.dropdown__item[aria-current="page"] strong::after {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--brand-orange);
+  vertical-align: middle;
+}
+@media (max-width: 1080px) {
+  .nav__actions { flex-direction: column; align-items: stretch; }
+  /* En celular la página actual conserva su subrayado naranja */
+  .nav__link[aria-current="page"], .nav__link[data-here] { text-decoration: underline; text-decoration-color: var(--brand-orange); text-decoration-thickness: 2px; text-underline-offset: 8px; }
+}
+
+/* ---------- Portada: accesos según quién visita ---------- */
+.doors { margin-top: 32px; padding: 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+.doors__label { font-size: 1.25rem; line-height: 1.3; font-weight: 600; letter-spacing: -0.02em; }
+.doors__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.tab--go svg { flex: none; transition: transform 200ms var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .tab--go:hover svg { transform: translateX(3px); }
+}
+.allies { padding: 64px 0 0; }
+
+/* En celular la foto principal manda: las insignias bajan y la foto gana altura,
+   para que cuando llegue la foto real no tapen las caras. */
+@media (max-width: 700px) {
+  .frame__photo { height: auto; aspect-ratio: 4 / 5; min-height: 360px; }
+  .frame__badges { position: static; margin-top: 12px; }
+  .badge-card { display: none; }
+  .doors { padding: 0; }
+  .doors__list { width: 100%; }
+}
+
+/* ---------- Historias ---------- */
+.story { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 48px 72px; align-items: center; }
+.story__media .portrait { width: 100%; aspect-ratio: 1; }
+.story__body { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.story__body h2 { margin-top: -6px; max-width: 640px; }
+.story__quote { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.story__mark { color: var(--brand-orange); }
+.story__quote p { font-size: clamp(1.375rem, 2.4vw, 1.75rem); line-height: 1.3; letter-spacing: -0.02em; font-weight: 500; color: var(--ink); max-width: 34ch; }
+.story__quote footer { font-size: 1rem; font-weight: 600; color: var(--muted); }
+.story__note { font-size: 0.9375rem; color: var(--muted); max-width: 56ch; }
+@media (max-width: 800px) {
+  .story { grid-template-columns: 1fr; }
+  .story__media { max-width: 220px; }
+}
+
+/* ---------- Bloques de programa: una sola lista, a lo ancho ---------- */
+.list-card h3 { font-size: 0.9375rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--brand-brown); margin-bottom: 12px; line-height: 1.3; }
+.list-card--wide { margin-top: 8px; }
+.list-card--wide .checks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 8px 20px; }
+
+/* ---------- Tarjetas informativas ---------- */
+.info-card h2 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; }
+.info-card h2.h-card { font-size: clamp(1.625rem, 3vw, 2rem); line-height: 1.12; }
+.info-card:target { box-shadow: 0 0 0 3px var(--brand-orange); }
+.info-card:focus { outline: none; }
+.info-card:focus-visible { outline: 3px solid var(--brand-brown); outline-offset: 3px; }
+.connect__title { font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; }
+
+/* ---------- Sedes: "cómo llegar" es una tarjeta, no una foto que falta ---------- */
+.map { background: var(--surface); min-height: 0; padding: 28px 32px; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 20px 24px; }
+.map .ico { width: 52px; height: 52px; border-radius: 50%; background: var(--sky-soft); display: flex; align-items: center; justify-content: center; color: var(--brand-brown); flex: none; }
+.map__text { flex: 1 1 240px; min-width: 0; }
+.map__text p { font-size: 1.125rem; font-weight: 500; margin-top: 2px; }
+@media (max-width: 700px) { .map { padding: 24px 22px; } }
+
+/* ---------- Galería del programa de jóvenes: ocupa el ancho ---------- */
+.gallery--wide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.gallery--wide figure { width: 100%; }
+.gallery--wide .portrait { width: min(320px, 100%); height: auto; aspect-ratio: 1; }
+@media (max-width: 700px) {
+  .gallery--wide { grid-template-columns: 1fr; justify-items: center; }
+  .gallery--wide .portrait { width: 220px; }
+}
+
+/* ---------- Formularios ---------- */
+.form-lead { color: var(--muted); font-size: 1rem; margin-top: 6px; }
+.field-note { margin-top: 10px; font-size: 0.875rem; color: var(--muted); }
+.field > .hint:empty { display: none; }
+.notice p + p { margin-top: 8px; }
+.notice .actions { margin-top: 16px; }
+.notice:focus { outline: none; }
+.notice:focus-visible { outline: 3px solid var(--brand-brown); outline-offset: 3px; }
+
+/* ---------- Quiénes somos ---------- */
+.steps--years .step__n { font-size: 1.125rem; letter-spacing: -0.02em; }
+.steps--years .step__n .pendiente { font-size: 0.75rem; padding: 1px 6px; }
+.team-note { margin-top: 24px; color: var(--muted); }
+.chips { align-items: center; }
+.panel .head__aside .pendiente { margin-top: 2px; }
+
+/* ---------- Detalles ---------- */
+/* Encabezado cuyo texto lateral es largo o lleva botones: se alinea arriba, no abajo */
+.head--top { align-items: flex-start; }
+.head--top .head__aside { padding-top: 8px; }
+/* El marcador de la historia no hereda el tamaño grande de la cita */
+.story__quote p .pendiente { font-size: 1rem; line-height: 1.4; }
+.ghost-word--right { right: 0; }
+.cta-band .actions .btn { flex: none; }
+
+/* ---------- Impresión y guardar como PDF ----------
+   Las secciones entran con una animación al hacer scroll; al imprimir nadie hace scroll,
+   así que aquí se muestran todas. */
+@media print {
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .js .orbit__path { stroke-dashoffset: 0 !important; transition: none !important; }
+  .nav__toggle, .nav__panel, .skip-link, .sat { display: none !important; }
+  body { background: #fff; }
+  .site-footer { box-shadow: none; }
+  .section { padding-top: 56px; }
+}
